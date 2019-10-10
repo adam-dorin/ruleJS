@@ -1352,7 +1352,7 @@ var ruleJS = (function (root, isVirtual) {
       allDependencies.forEach(function (refId) {
         var item = instance.matrix.getItem(refId);
         if (item && item.formula) {
-          var refElement = rootElement.querySelector(refId);
+          var refElement = rootElement.querySelector('#'+refId);
           calculateElementFormula(item.formula, refElement);
         }
       });
