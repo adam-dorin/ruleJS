@@ -1,11 +1,11 @@
-:warning: This repository is deprecated.
 
 
-<details>
+
+
   
 RuleJS
 =======
-Like excel library to parse formulas ([demo](http://handsontable.github.io/ruleJS/)).
+Like excel library to parse formulas ([demo](https://adam-dorin.github.io/ruleJS/)).
 
 ## How to run
 - npm install
@@ -14,4 +14,4 @@ Like excel library to parse formulas ([demo](http://handsontable.github.io/ruleJ
 ## License
 The MIT License (see the [LICENSE](https://github.com/Berus/RuleJS/blob/master/LICENSE) file for the full text)
 
-</details>
+
