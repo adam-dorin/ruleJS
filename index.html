@@ -45,7 +45,7 @@
   <div class="clearfix"></div>
 
   <section>
-    <h1 class="page-header">Demo</h1>
+    <h1 class="page-header">DOM Table Demo</h1>
     <p>Try to parse the formula by typing ex. <code>AND(1,0)</code> into input below and press <kbd>Parse</kbd> button.</p>
 
     <div class="col-xs-6" style="padding: 0px;" id="demo1">
@@ -155,6 +155,13 @@
     </div>
 
   </section>
+
+  <section class="col-xs-12">
+    <h1 class="page-header">Virtual DOM Demo</h1>
+    <div class="vd">
+
+    </div>
+  </section> 
 </div>
 
 <script>
@@ -213,6 +220,56 @@
       });
 
     })();
+
+    // Virtual DOM demo
+    
+    // get data
+    var formulaElements = document.querySelectorAll('td span');
+    var elements = document.querySelectorAll('td input[type="text"]');
+    var elementsData = {
+      
+    };
+    var formulas = [];
+    for(let i=0;i< formulaElements.length;i++ ){
+      formulas.push(formulaElements[i].dataset.formula)
+    } 
+    for(let j=0;j< elements.length;j++ ){
+      elementsData[elements[j].id] = elements[j].value; 
+    
+    } 
+    elementsData.flatE = Object.keys(elementsData);
+    
+
+    // create virtual DOM
+
+    var container = document.createElement('div');
+    container.id = 'container';
+
+    for(let k=0;k< elementsData.flatE.length;k++ ){
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.id = elementsData.flatE[k];
+      input.value = elementsData[ elementsData.flatE[k] ];
+      //console.log(input.value)
+      container.appendChild(input)
+    } 
+
+    //console.log(formulas, elementsData, container)
+
+    var virtualRuleJS = new ruleJS(container, true);
+    virtualRuleJS.init();
+    var  domContainer = document.querySelector('.vd');
+
+    for(let i=0;i<formulas.length;i++){
+      
+      var input = document.createElement('input');
+      input.type = 'text';
+      input.value = formulas[i];
+
+      var p = document.createElement('p');
+      p.innerText = JSON.stringify( virtualRuleJS.parse(formulas[i] , input) );
+      domContainer.appendChild(p)
+    }
 
   })();
 </script>
